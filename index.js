@@ -1,26 +1,13 @@
-import React, { Component } from "react";
-import { render } from "react-dom";
-import 'bootstrap/dist/css/bootstrap.css';
-import {navbar} from reactstrap;
-import Hello from "./Hello";
-import "./style.css";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
+import App from './App';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: "Rushi"
-    };
-  }
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 
-  render() {
-    return (
-      <div>
-        <Hello name={this.state.name} />
-        <p>Start editing to see some magic happen :)</p>
-      </div>
-    );
-  }
-}
-
-render(<App />, document.getElementById("root"));
