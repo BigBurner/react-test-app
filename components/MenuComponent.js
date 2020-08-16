@@ -1,39 +1,27 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
 
 //this perfix is needed on StackBlitz to display images, locally this can be blank
-// const imgPref = '';
-export const imgPref = 'https://stackblitz.com/files/react-9yqgvb/github/BigBurner/react-test-app/master/';
+//const imgPref = '';
+const imgPref = 'https://stackblitz.com/files/react-9yqgvb/github/BigBurner/react-test-app/master/';
 
-class Menu extends Component {
-
-
-   
-	constructor(props) {
-		console.log('MenuComp >> Constructor');
-		super(props);
-		
-		this.state = {
-            selectedDish: null
-		}
+	function RenderMenuComponent({ dish, onClick }) {
+		return(
+			<Card onClick={() => onClick(dish.id)}>
+				<CardImg width="100%" src={imgPref+dish.image} alt={dish.name} />
+				<CardImgOverlay>
+				  <CardTitle>{dish.name}</CardTitle>
+				</CardImgOverlay>
+			</Card>
+			);
 	}
-	
-	componentDidMount () {
-		console.log('MenuComp >> componentDidMount');
-	}
-	
-	render() {
-		console.log('MenuComp >> render');
-		const Menu = this.props.dishes.map((dish) => {
+
+
+	const Menu = (props) => {
+		const Menu = props.dishes.map((dish) => {
 			return ( 
 					<div key={dish.id} className="col-12 col-md-5 m-1">
-						<Card key={dish.id}
-						  onClick={() => this.props.onClick(dish.id)}>
-						  <CardImg width="100%" src={imgPref+dish.image} alt={dish.name} />
-						  <CardImgOverlay>
-							  <CardTitle>{dish.name}</CardTitle>
-						  </CardImgOverlay>
-						</Card>
+						<RenderMenuComponent dish={dish} onClick={props.onClick}/>
 					</div>
 					)
 		});
@@ -46,6 +34,5 @@ class Menu extends Component {
 			</div>
 		);
 	}
-}
 
 export default Menu;

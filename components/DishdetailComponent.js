@@ -1,23 +1,13 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import { Card, CardImg, CardText, CardBody,
     CardTitle } from 'reactstrap';
 
 //this perfix is needed on StackBlitz to display images, locally this can be blank
-//const imgPref = '';
-export const imgPref = 'https://stackblitz.com/files/react-9yqgvb/github/BigBurner/react-test-app/master/';
+// const imgPref = '';
+const imgPref = 'https://stackblitz.com/files/react-9yqgvb/github/BigBurner/react-test-app/master/';
 
-class Dishdetail extends Component {
-	constructor(props) {
-		console.log('Dishdetail >> Constructor');
-		super(props);
-		
-		this.state = {
-            selectedDish: this.props.dish
-		}
-	}
-	
-	renderDish (dish) {
+	function RenderDish({dish}) {
 		return (
 				<Card>
 					<CardImg top src={imgPref+dish.image} alt={dish.name} />
@@ -29,7 +19,7 @@ class Dishdetail extends Component {
 		);
 	}
 
-	renderComments(comments){
+	function RenderComments({comments}){
 		if (comments == null) {
 			return (<div></div>);
 		}
@@ -52,18 +42,18 @@ class Dishdetail extends Component {
 		);				
 	}
 	
-	render() {
-		const dish = this.props.dish;
+	function Dishdetail(props) {
+		const dish = props.dish;
 		
 		if (dish != null) {
 			return (
 			<div className="container">
 				<div className="row">
 					<div className="col-12 col-md-5 m-1">
-						{this.renderDish(dish)}
+						<RenderDish dish={dish} />
 					</div>
 					<div className="col-12 col-md-5 m-1">
-						{this.renderComments(dish.comments)}
+						<RenderComments comments={dish.comments} />
 					</div>
 				</div>
 			</div>	
@@ -74,6 +64,5 @@ class Dishdetail extends Component {
 			);
 		}
 	}
-}
 
 export default Dishdetail;
