@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import { Card, CardImg, CardImgOverlay, CardText, CardBody,
+import { Card, CardImg, CardText, CardBody,
     CardTitle } from 'reactstrap';
 
 //this perfix is needed on StackBlitz to display images, locally this can be blank
@@ -25,7 +25,7 @@ class Dishdetail extends Component {
 					  <CardTitle>{dish.name}</CardTitle>
 					  <CardText>{dish.description}</CardText>
 					</CardBody>
-				</Card>			
+				</Card>	
 		);
 	}
 
@@ -57,6 +57,7 @@ class Dishdetail extends Component {
 		
 		if (dish != null) {
 			return (
+			<div className="container">
 				<div className="row">
 					<div className="col-12 col-md-5 m-1">
 						{this.renderDish(dish)}
@@ -65,6 +66,7 @@ class Dishdetail extends Component {
 						{this.renderComments(dish.comments)}
 					</div>
 				</div>
+			</div>	
 			);
 		} else {
 			return (
