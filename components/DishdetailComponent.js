@@ -2,10 +2,7 @@ import React from 'react';
 
 import { Card, CardImg, CardText, CardBody,
     CardTitle } from 'reactstrap';
-
-//this perfix is needed on StackBlitz to display images, locally this can be blank
-// const imgPref = '';
-const imgPref = 'https://stackblitz.com/files/react-9yqgvb/github/BigBurner/react-test-app/master/';
+import { imgPref } from '../shared/Constants';
 
 	function RenderDish({dish}) {
 		return (
